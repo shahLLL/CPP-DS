@@ -21,10 +21,10 @@ FetchContent_MakeAvailable(Catch2)
 
 # Collect all C++ src and test files
 file(GLOB TESTS "tests/*.cpp")
-file(GLOB SOURCES "src/*.cpp")
+# file(GLOB SOURCES "src/*.cpp")
 
 # Create the test executable
-add_executable(unit_tests ${TESTS} ${SOURCES})
+add_executable(unit_tests ${TESTS})
 
 # Apply compiler warning flags
 target_compile_options(unit_tests PRIVATE -Wall -Wextra)
