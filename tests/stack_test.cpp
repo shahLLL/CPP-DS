@@ -1,9 +1,9 @@
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers_exception.hpp>
-#include "../headers/linked_list.h"
+#include "../headers/stack.h"
 
-TEST_CASE("LINKED LIST TEST CASE #1", "[linkedlist]") {
-    LinkedList<int> lst = LinkedList<int>();
+TEST_CASE("STACK TEST CASE #1", "[Stack]") {
+    Stack<int> lst = Stack<int>();
     REQUIRE(lst.getSize() == 0);
     REQUIRE(lst.isEmpty());
     REQUIRE_THROWS_AS(lst.peek(), std::out_of_range);
@@ -21,8 +21,8 @@ TEST_CASE("LINKED LIST TEST CASE #1", "[linkedlist]") {
     REQUIRE(lst.isEmpty());
 }
 
-TEST_CASE("LINKED LIST TEST CASE #2", "[linkedlist]") {
-    LinkedList<int> lst = LinkedList<int>();
+TEST_CASE("STACK TEST CASE #2", "[Stack]") {
+    Stack<int> lst = Stack<int>();
     REQUIRE(lst.getSize() == 0);
     REQUIRE(lst.isEmpty());
     REQUIRE_THROWS_AS(lst.peek(), std::out_of_range);

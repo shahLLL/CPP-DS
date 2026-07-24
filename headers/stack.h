@@ -1,21 +1,22 @@
-#ifndef LINKED_LIST_H
-#define LINKED_LIST_H
+#ifndef STACK_H
+#define STACK_H
 
 #include <memory>
 #include <climits>
+#include <string>
 #include "node.h"
 
-const std::string peekEmptyErrorMessage = "PEEK CALLED ON EMPTY LINKED LIST";
-const std::string popEmptyErrorMessage = "POP CALLED ON EMPTY LINKED LIST";    
+const std::string peekEmptyErrorMessage = "PEEK CALLED ON EMPTY  STACK";
+const std::string popEmptyErrorMessage = "POP CALLED ON EMPTY STACK";    
 
 template<typename T>
-class LinkedList {
+class Stack {
     std::unique_ptr<Node<T>> head;
     unsigned short size;
     const unsigned short capacity = USHRT_MAX;
 
     public:
-        LinkedList() : head(nullptr), size(0) {}
+        Stack() : head(nullptr), size(0) {}
         bool isEmpty() { return size == 0; }
         unsigned short getSize() { return size; }
 
