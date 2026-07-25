@@ -26,7 +26,7 @@ class Stack {
             return head.get()->getData();
         }
 
-        bool add(T data) { 
+        bool push(T data) { 
             if(size == capacity)
                 return false;
             

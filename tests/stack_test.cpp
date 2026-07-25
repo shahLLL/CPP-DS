@@ -12,7 +12,7 @@ TEST_CASE("STACK TEST CASE #1", "[Stack]") {
     REQUIRE_THROWS_WITH(lst.pop(), popEmptyErrorMessage);
 
     int val1 = 4;
-    REQUIRE(lst.add(val1));
+    REQUIRE(lst.push(val1));
     REQUIRE(lst.getSize() == 1);
     REQUIRE(!lst.isEmpty());
     REQUIRE(lst.peek() == val1);
@@ -32,8 +32,8 @@ TEST_CASE("STACK TEST CASE #2", "[Stack]") {
 
     int val1 = 1;
     int val2 = 2;
-    REQUIRE(lst.add(val1));
-    REQUIRE(lst.add(val2));
+    REQUIRE(lst.push(val1));
+    REQUIRE(lst.push(val2));
     REQUIRE(lst.getSize() == 2);
     REQUIRE(!lst.isEmpty());
     REQUIRE(lst.peek() == val2);
