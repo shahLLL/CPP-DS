@@ -41,11 +41,11 @@ class Stack {
             if(size == 0)
                 return false;
 
-            Node<T>* itr = head.get();
-            while(itr != nullptr) {
+            auto itr = head.get();
+            while(itr) {
                 if(itr->getData() == data)
                     return true;
-                itr = itr->getNext().get();
+                itr = itr->getNext();
             }
 
             return false;

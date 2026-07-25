@@ -3,45 +3,122 @@
 #include "../headers/stack.h"
 
 TEST_CASE("STACK TEST CASE #1", "[Stack]") {
-    Stack<int> lst = Stack<int>();
-    REQUIRE(lst.getSize() == 0);
-    REQUIRE(lst.isEmpty());
-    REQUIRE_THROWS_AS(lst.peek(), std::out_of_range);
-    REQUIRE_THROWS_WITH(lst.peek(), peekEmptyErrorMessage);
-    REQUIRE_THROWS_AS(lst.pop(), std::out_of_range);
-    REQUIRE_THROWS_WITH(lst.pop(), popEmptyErrorMessage);
-
+    Stack<int> stack = Stack<int>();
     int val1 = 4;
-    REQUIRE(lst.push(val1));
-    REQUIRE(lst.getSize() == 1);
-    REQUIRE(!lst.isEmpty());
-    REQUIRE(lst.peek() == val1);
-    REQUIRE(lst.pop() == val1);
-    REQUIRE(lst.getSize() == 0);
-    REQUIRE(lst.isEmpty());
+
+    REQUIRE(stack.getSize() == 0);
+    REQUIRE(stack.isEmpty());
+    REQUIRE(!stack.contains(val1));
+    REQUIRE_THROWS_AS(stack.peek(), std::out_of_range);
+    REQUIRE_THROWS_WITH(stack.peek(), peekEmptyErrorMessage);
+    REQUIRE_THROWS_AS(stack.pop(), std::out_of_range);
+    REQUIRE_THROWS_WITH(stack.pop(), popEmptyErrorMessage);
+    
+    REQUIRE(stack.push(val1));
+    REQUIRE(stack.getSize() == 1);
+    REQUIRE(!stack.isEmpty());
+    REQUIRE(stack.contains(val1));
+    REQUIRE(stack.peek() == val1);
+    REQUIRE(stack.pop() == val1);
+    REQUIRE(stack.getSize() == 0);
+    REQUIRE(stack.isEmpty());
+    REQUIRE(!stack.contains(val1));
+    REQUIRE_THROWS_AS(stack.peek(), std::out_of_range);
+    REQUIRE_THROWS_WITH(stack.peek(), peekEmptyErrorMessage);
+    REQUIRE_THROWS_AS(stack.pop(), std::out_of_range);
+    REQUIRE_THROWS_WITH(stack.pop(), popEmptyErrorMessage);
 }
 
 TEST_CASE("STACK TEST CASE #2", "[Stack]") {
-    Stack<int> lst = Stack<int>();
-    REQUIRE(lst.getSize() == 0);
-    REQUIRE(lst.isEmpty());
-    REQUIRE_THROWS_AS(lst.peek(), std::out_of_range);
-    REQUIRE_THROWS_WITH(lst.peek(), peekEmptyErrorMessage);
-    REQUIRE_THROWS_AS(lst.pop(), std::out_of_range);
-    REQUIRE_THROWS_WITH(lst.pop(), popEmptyErrorMessage);
-
+    Stack<int> stack = Stack<int>();
     int val1 = 1;
     int val2 = 2;
-    REQUIRE(lst.push(val1));
-    REQUIRE(lst.push(val2));
-    REQUIRE(lst.getSize() == 2);
-    REQUIRE(!lst.isEmpty());
-    REQUIRE(lst.peek() == val2);
-    REQUIRE(lst.pop() == val2);
-    REQUIRE(lst.getSize() == 1);
-    REQUIRE(!lst.isEmpty());
-    REQUIRE(lst.peek() == val1);
-    REQUIRE(lst.pop() == val1);
-    REQUIRE(lst.getSize() == 0);
-    REQUIRE(lst.isEmpty());
+
+    REQUIRE(stack.getSize() == 0);
+    REQUIRE(stack.isEmpty());
+    REQUIRE(!stack.contains(val1));
+    REQUIRE(!stack.contains(val2));
+    REQUIRE_THROWS_AS(stack.peek(), std::out_of_range);
+    REQUIRE_THROWS_WITH(stack.peek(), peekEmptyErrorMessage);
+    REQUIRE_THROWS_AS(stack.pop(), std::out_of_range);
+    REQUIRE_THROWS_WITH(stack.pop(), popEmptyErrorMessage);
+
+    
+    REQUIRE(stack.push(val1));
+    REQUIRE(stack.getSize() == 1);
+    REQUIRE(!stack.isEmpty());
+    REQUIRE(stack.contains(val1));
+    REQUIRE(!stack.contains(val2));
+    REQUIRE(stack.peek() == val1);
+
+    REQUIRE(stack.push(val2));
+    REQUIRE(stack.getSize() == 2);
+    REQUIRE(!stack.isEmpty());
+    REQUIRE(stack.contains(val1));
+    REQUIRE(stack.contains(val2));
+    REQUIRE(stack.peek() == val2);
+
+    REQUIRE(stack.pop() == val2);
+    REQUIRE(stack.getSize() == 1);
+    REQUIRE(!stack.isEmpty());
+    REQUIRE(stack.contains(val1));
+    REQUIRE(!stack.contains(val2));
+    REQUIRE(stack.peek() == val1);
+
+    REQUIRE(stack.pop() == val1);
+    REQUIRE(stack.getSize() == 0);
+    REQUIRE(stack.isEmpty());
+    REQUIRE(!stack.contains(val1));
+    REQUIRE(!stack.contains(val2));
+    REQUIRE_THROWS_AS(stack.peek(), std::out_of_range);
+    REQUIRE_THROWS_WITH(stack.peek(), peekEmptyErrorMessage);
+    REQUIRE_THROWS_AS(stack.pop(), std::out_of_range);
+    REQUIRE_THROWS_WITH(stack.pop(), popEmptyErrorMessage);
+}
+
+TEST_CASE("STACK TEST CASE #3", "[Stack]") {
+    Stack<double> stack = Stack<double>();
+    double val1 = 9.89;
+    double val2 = 2.176;
+
+    REQUIRE(stack.getSize() == 0);
+    REQUIRE(stack.isEmpty());
+    REQUIRE(!stack.contains(val1));
+    REQUIRE(!stack.contains(val2));
+    REQUIRE_THROWS_AS(stack.peek(), std::out_of_range);
+    REQUIRE_THROWS_WITH(stack.peek(), peekEmptyErrorMessage);
+    REQUIRE_THROWS_AS(stack.pop(), std::out_of_range);
+    REQUIRE_THROWS_WITH(stack.pop(), popEmptyErrorMessage);
+
+    
+    REQUIRE(stack.push(val1));
+    REQUIRE(stack.getSize() == 1);
+    REQUIRE(!stack.isEmpty());
+    REQUIRE(stack.contains(val1));
+    REQUIRE(!stack.contains(val2));
+    REQUIRE(stack.peek() == val1);
+
+    REQUIRE(stack.push(val2));
+    REQUIRE(stack.getSize() == 2);
+    REQUIRE(!stack.isEmpty());
+    REQUIRE(stack.contains(val1));
+    REQUIRE(stack.contains(val2));
+    REQUIRE(stack.peek() == val2);
+
+    REQUIRE(stack.pop() == val2);
+    REQUIRE(stack.getSize() == 1);
+    REQUIRE(!stack.isEmpty());
+    REQUIRE(stack.contains(val1));
+    REQUIRE(!stack.contains(val2));
+    REQUIRE(stack.peek() == val1);
+
+    REQUIRE(stack.pop() == val1);
+    REQUIRE(stack.getSize() == 0);
+    REQUIRE(stack.isEmpty());
+    REQUIRE(!stack.contains(val1));
+    REQUIRE(!stack.contains(val2));
+    REQUIRE_THROWS_AS(stack.peek(), std::out_of_range);
+    REQUIRE_THROWS_WITH(stack.peek(), peekEmptyErrorMessage);
+    REQUIRE_THROWS_AS(stack.pop(), std::out_of_range);
+    REQUIRE_THROWS_WITH(stack.pop(), popEmptyErrorMessage);
 }
