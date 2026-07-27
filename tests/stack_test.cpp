@@ -10,9 +10,9 @@ TEST_CASE("STACK TEST CASE #1", "[Stack]") {
     REQUIRE(stack.isEmpty());
     REQUIRE(!stack.contains(val1));
     REQUIRE_THROWS_AS(stack.peek(), std::out_of_range);
-    REQUIRE_THROWS_WITH(stack.peek(), peekEmptyErrorMessage);
+    REQUIRE_THROWS_WITH(stack.peek(), stackPeekEmptyErrorMessage);
     REQUIRE_THROWS_AS(stack.pop(), std::out_of_range);
-    REQUIRE_THROWS_WITH(stack.pop(), popEmptyErrorMessage);
+    REQUIRE_THROWS_WITH(stack.pop(), stackPopEmptyErrorMessage);
     
     REQUIRE(stack.push(val1));
     REQUIRE(stack.getSize() == 1);
@@ -24,9 +24,9 @@ TEST_CASE("STACK TEST CASE #1", "[Stack]") {
     REQUIRE(stack.isEmpty());
     REQUIRE(!stack.contains(val1));
     REQUIRE_THROWS_AS(stack.peek(), std::out_of_range);
-    REQUIRE_THROWS_WITH(stack.peek(), peekEmptyErrorMessage);
+    REQUIRE_THROWS_WITH(stack.peek(), stackPeekEmptyErrorMessage);
     REQUIRE_THROWS_AS(stack.pop(), std::out_of_range);
-    REQUIRE_THROWS_WITH(stack.pop(), popEmptyErrorMessage);
+    REQUIRE_THROWS_WITH(stack.pop(), stackPopEmptyErrorMessage);
 }
 
 TEST_CASE("STACK TEST CASE #2", "[Stack]") {
@@ -39,9 +39,9 @@ TEST_CASE("STACK TEST CASE #2", "[Stack]") {
     REQUIRE(!stack.contains(val1));
     REQUIRE(!stack.contains(val2));
     REQUIRE_THROWS_AS(stack.peek(), std::out_of_range);
-    REQUIRE_THROWS_WITH(stack.peek(), peekEmptyErrorMessage);
+    REQUIRE_THROWS_WITH(stack.peek(), stackPeekEmptyErrorMessage);
     REQUIRE_THROWS_AS(stack.pop(), std::out_of_range);
-    REQUIRE_THROWS_WITH(stack.pop(), popEmptyErrorMessage);
+    REQUIRE_THROWS_WITH(stack.pop(), stackPopEmptyErrorMessage);
 
     
     REQUIRE(stack.push(val1));
@@ -71,9 +71,9 @@ TEST_CASE("STACK TEST CASE #2", "[Stack]") {
     REQUIRE(!stack.contains(val1));
     REQUIRE(!stack.contains(val2));
     REQUIRE_THROWS_AS(stack.peek(), std::out_of_range);
-    REQUIRE_THROWS_WITH(stack.peek(), peekEmptyErrorMessage);
+    REQUIRE_THROWS_WITH(stack.peek(), stackPeekEmptyErrorMessage);
     REQUIRE_THROWS_AS(stack.pop(), std::out_of_range);
-    REQUIRE_THROWS_WITH(stack.pop(), popEmptyErrorMessage);
+    REQUIRE_THROWS_WITH(stack.pop(), stackPopEmptyErrorMessage);
 }
 
 TEST_CASE("STACK TEST CASE #3", "[Stack]") {
@@ -86,9 +86,9 @@ TEST_CASE("STACK TEST CASE #3", "[Stack]") {
     REQUIRE(!stack.contains(val1));
     REQUIRE(!stack.contains(val2));
     REQUIRE_THROWS_AS(stack.peek(), std::out_of_range);
-    REQUIRE_THROWS_WITH(stack.peek(), peekEmptyErrorMessage);
+    REQUIRE_THROWS_WITH(stack.peek(), stackPeekEmptyErrorMessage);
     REQUIRE_THROWS_AS(stack.pop(), std::out_of_range);
-    REQUIRE_THROWS_WITH(stack.pop(), popEmptyErrorMessage);
+    REQUIRE_THROWS_WITH(stack.pop(), stackPopEmptyErrorMessage);
 
     
     REQUIRE(stack.push(val1));
@@ -118,7 +118,7 @@ TEST_CASE("STACK TEST CASE #3", "[Stack]") {
     REQUIRE(!stack.contains(val1));
     REQUIRE(!stack.contains(val2));
     REQUIRE_THROWS_AS(stack.peek(), std::out_of_range);
-    REQUIRE_THROWS_WITH(stack.peek(), peekEmptyErrorMessage);
+    REQUIRE_THROWS_WITH(stack.peek(), stackPeekEmptyErrorMessage);
     REQUIRE_THROWS_AS(stack.pop(), std::out_of_range);
-    REQUIRE_THROWS_WITH(stack.pop(), popEmptyErrorMessage);
+    REQUIRE_THROWS_WITH(stack.pop(), stackPopEmptyErrorMessage);
 }

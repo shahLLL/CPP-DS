@@ -4,7 +4,7 @@
 #include <memory>
 #include <climits>
 
-unsigned int defaultCapacity = 10;
+constexpr unsigned int defaultCapacity = 10;
 
 template <typename T>
 class DynamicArray {

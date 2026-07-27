@@ -6,8 +6,8 @@
 #include <string>
 #include "node.h"
 
-const std::string peekEmptyErrorMessage = "PEEK CALLED ON EMPTY  STACK";
-const std::string popEmptyErrorMessage = "POP CALLED ON EMPTY STACK";    
+const std::string stackPeekEmptyErrorMessage = "PEEK CALLED ON EMPTY  STACK";
+const std::string stackPopEmptyErrorMessage = "POP CALLED ON EMPTY STACK";    
 
 template<typename T>
 class Stack {
@@ -22,7 +22,7 @@ class Stack {
 
         T peek() { 
             if(head == nullptr)
-                throw std::out_of_range(peekEmptyErrorMessage);
+                throw std::out_of_range(stackPeekEmptyErrorMessage);
             return head.get()->getData();
         }
 
@@ -53,7 +53,7 @@ class Stack {
 
         T pop() { 
             if(size == 0)
-                throw std::out_of_range(popEmptyErrorMessage);
+                throw std::out_of_range(stackPopEmptyErrorMessage);
             
             auto popedNode = std::move(head);
             head = popedNode->releaseNext();

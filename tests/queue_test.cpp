@@ -11,9 +11,9 @@ TEST_CASE("QUEUE TEST CASE #1", "[queue]") {
     REQUIRE(!queue.contains(val1));
     REQUIRE(!queue.contains(val2));
     REQUIRE_THROWS_AS(queue.peek(), std::out_of_range);
-    REQUIRE_THROWS_WITH(queue.peek(), peekEmptyErrorMessage);
+    REQUIRE_THROWS_WITH(queue.peek(), queuePeekEmptyErrorMessage);
     REQUIRE_THROWS_AS(queue.deque(), std::out_of_range);
-    REQUIRE_THROWS_WITH(queue.deque(), dequeEmptyErrorMessage);
+    REQUIRE_THROWS_WITH(queue.deque(), queueDequeEmptyErrorMessage);
 
     REQUIRE(queue.enque(val1));
     REQUIRE(queue.getSize() == 1);
@@ -42,9 +42,9 @@ TEST_CASE("QUEUE TEST CASE #1", "[queue]") {
     REQUIRE(!queue.contains(val1));
     REQUIRE(!queue.contains(val2));
     REQUIRE_THROWS_AS(queue.peek(), std::out_of_range);
-    REQUIRE_THROWS_WITH(queue.peek(), peekEmptyErrorMessage);
+    REQUIRE_THROWS_WITH(queue.peek(), queuePeekEmptyErrorMessage);
     REQUIRE_THROWS_AS(queue.deque(), std::out_of_range);
-    REQUIRE_THROWS_WITH(queue.deque(), dequeEmptyErrorMessage);
+    REQUIRE_THROWS_WITH(queue.deque(), queueDequeEmptyErrorMessage);
 }
 
 TEST_CASE("QUEUE TEST CASE #2", "[queue]") {
@@ -56,9 +56,9 @@ TEST_CASE("QUEUE TEST CASE #2", "[queue]") {
     REQUIRE(!queue.contains(val1));
     REQUIRE(!queue.contains(val2));
     REQUIRE_THROWS_AS(queue.peek(), std::out_of_range);
-    REQUIRE_THROWS_WITH(queue.peek(), peekEmptyErrorMessage);
+    REQUIRE_THROWS_WITH(queue.peek(), queuePeekEmptyErrorMessage);
     REQUIRE_THROWS_AS(queue.deque(), std::out_of_range);
-    REQUIRE_THROWS_WITH(queue.deque(), dequeEmptyErrorMessage);
+    REQUIRE_THROWS_WITH(queue.deque(), queueDequeEmptyErrorMessage);
 
     REQUIRE(queue.enque(val1));
     REQUIRE(queue.getSize() == 1);
@@ -87,7 +87,7 @@ TEST_CASE("QUEUE TEST CASE #2", "[queue]") {
     REQUIRE(!queue.contains(val1));
     REQUIRE(!queue.contains(val2));
     REQUIRE_THROWS_AS(queue.peek(), std::out_of_range);
-    REQUIRE_THROWS_WITH(queue.peek(), peekEmptyErrorMessage);
+    REQUIRE_THROWS_WITH(queue.peek(), queuePeekEmptyErrorMessage);
     REQUIRE_THROWS_AS(queue.deque(), std::out_of_range);
-    REQUIRE_THROWS_WITH(queue.deque(), dequeEmptyErrorMessage);
+    REQUIRE_THROWS_WITH(queue.deque(), queueDequeEmptyErrorMessage);
 }

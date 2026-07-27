@@ -7,8 +7,8 @@
 #include <stdexcept>
 #include "double_node.h"
 
-const std::string peekEmptyErrorMessage = "PEEK CALLED ON EMPTY QUEUE";
-const std::string dequeEmptyErrorMessage = "DEQUE CALLED ON EMPTY QUEUE";
+const std::string queuePeekEmptyErrorMessage = "PEEK CALLED ON EMPTY QUEUE";
+const std::string queueDequeEmptyErrorMessage = "DEQUE CALLED ON EMPTY QUEUE";
 
 template <typename T>
 class Queue {
@@ -25,7 +25,7 @@ class Queue {
 
         T peek() const {
             if(size == 0)
-                throw std::out_of_range(peekEmptyErrorMessage);
+                throw std::out_of_range(queuePeekEmptyErrorMessage);
             return head->getData();
         }
 
@@ -60,7 +60,7 @@ class Queue {
 
         T deque() {
             if (size == 0)
-                throw std::out_of_range(dequeEmptyErrorMessage);
+                throw std::out_of_range(queueDequeEmptyErrorMessage);
 
             std::shared_ptr<DoubleNode<T>> oldHead = head;
             head = head->getNext();
