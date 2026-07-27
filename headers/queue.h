@@ -19,9 +19,9 @@ class Queue {
     const unsigned short capacity = USHRT_MAX;
 
     public:
-        Queue(): head(nullptr), tail(), size(0) {}
-        unsigned short getSize() const { return size; }
-        bool isEmpty() const { return size == 0; }
+        Queue() noexcept : head(nullptr), tail(), size(0) {}
+        unsigned short getSize() const noexcept { return size; }
+        bool isEmpty() const noexcept { return size == 0; }
 
         T peek() const {
             if(size == 0)

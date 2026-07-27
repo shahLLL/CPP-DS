@@ -10,10 +10,10 @@ class Node {
     public:
         Node(T data): data(data), next(nullptr) {}
         T getData() const { return data; }
-        Node<T>* getNext() const { return next.get(); }
+        Node<T>* getNext() const noexcept { return next.get(); }
         void setNext(T data) { next = std::make_unique<Node<T>>(data); }
-        void setNext(std::unique_ptr<Node<T>> newNext) { next = std::move(newNext); }
-        bool hasNext() const { return next != nullptr; };
-        std::unique_ptr<Node<T>> releaseNext() { return std::move(next); }
+        void setNext(std::unique_ptr<Node<T>> newNext) noexcept { next = std::move(newNext); }
+        bool hasNext() const noexcept { return next != nullptr; };
+        std::unique_ptr<Node<T>> releaseNext() noexcept { return std::move(next); }
 };
 #endif

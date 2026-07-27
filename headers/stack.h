@@ -16,11 +16,11 @@ class Stack {
     const unsigned short capacity = USHRT_MAX;
 
     public:
-        Stack() : head(nullptr), size(0) {}
-        bool isEmpty() { return size == 0; }
-        unsigned short getSize() { return size; }
+        Stack(): head(nullptr), size(0) {}
+        bool isEmpty() const noexcept { return size == 0; }
+        unsigned short getSize() const { return size; }
 
-        T peek() { 
+        T peek() const { 
             if(head == nullptr)
                 throw std::out_of_range(stackPeekEmptyErrorMessage);
             return head.get()->getData();
@@ -37,7 +37,7 @@ class Stack {
             return true;
         }
         
-        bool contains(T data) { 
+        bool contains(T data) const { 
             if(size == 0)
                 return false;
 

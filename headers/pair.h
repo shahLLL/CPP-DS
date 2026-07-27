@@ -9,7 +9,7 @@ class Pair {
         Pair(T key, U value): key(key), value(value) {}
         T getKey() const { return key; }
         U getValue() const { return value; } 
-        void setValue(U value) { this->value = value; }
+        void setValue(U value) noexcept { this->value = value; }
 };
 
 #endif

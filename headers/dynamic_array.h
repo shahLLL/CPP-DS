@@ -26,9 +26,9 @@ class DynamicArray {
 
     public:
         DynamicArray(): size(0),  currentCapacity(defaultCapacity), array(std::make_unique<T[]>(currentCapacity)){}
-        unsigned short getSize() const { return size; }
-        unsigned int getCapacity() const { return currentCapacity; }
-        bool isEmpty() const { return size == 0; }
+        unsigned short getSize() const noexcept { return size; }
+        unsigned int getCapacity() const noexcept { return currentCapacity; }
+        bool isEmpty() const noexcept { return size == 0; }
 
         bool contains(T data) const {
             for(int i = 0; i < size; i++)
