@@ -13,6 +13,9 @@ TEST_CASE("HASTABLE TESTCASES #1", "[hastable]") {
     REQUIRE(!testMap.contains(key1));
     REQUIRE(!testMap.contains(key2));
     REQUIRE(!testMap.contains(key3));
+    REQUIRE(!testMap.put(key1, 2 * key1));
+    REQUIRE(!testMap.put(key2, 2 * key2));
+    REQUIRE(!testMap.put(key3, 2 * key3));
     REQUIRE(!testMap.remove(key1));
     REQUIRE(!testMap.remove(key2));
     REQUIRE(!testMap.remove(key3));
@@ -74,4 +77,7 @@ TEST_CASE("HASTABLE TESTCASES #1", "[hastable]") {
     REQUIRE(testMap.get(key3) == key3 * 2);
     REQUIRE_THROWS_AS(testMap.get(key2), std::invalid_argument);
     REQUIRE_THROWS_WITH(testMap.get(key2), hashTableGetErrorMessage);
+
+    REQUIRE(testMap.put(key3, key3 * 4));
+    REQUIRE(testMap.get(key3) == key3 * 4);
 }

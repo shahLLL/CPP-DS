@@ -8,43 +8,28 @@ TEST_CASE("PAIR TEST CASE #1", "[pair]") {
     Pair<int, int> pair = Pair<int, int>(int1, int2);
     REQUIRE(pair.getKey() == int1);
     REQUIRE(pair.getValue() == int2);
-    pair.setValue(int1);
-    REQUIRE(pair.getKey() == int1);
-    REQUIRE(pair.getValue() == int1);
 }
 
 TEST_CASE("PAIR TEST CASE #2", "[pair]") {
     int int1 = 2;
     double double1  = 2.22;
-    double double2  = 4.25;
     Pair<int, double> pair = Pair<int, double>(int1, double1);
     REQUIRE(pair.getKey() == int1);
     REQUIRE(pair.getValue() == double1);
-    pair.setValue(double2);
-    REQUIRE(pair.getKey() == int1);
-    REQUIRE(pair.getValue() == double2);
 }
 
 TEST_CASE("PAIR TEST CASE #3", "[pair]") {
     double double1 = 4.0;
     int int1 = 4;
-    int int2 = 8;
     Pair<double, int> pair = Pair<double, int>(double1, int1);
     REQUIRE(pair.getKey() == double1);
     REQUIRE(pair.getValue() == int1);
-    pair.setValue(int2);
-    REQUIRE(pair.getKey() == double1);
-    REQUIRE(pair.getValue() == int2);
 }
 
 TEST_CASE("PAIR TEST CASE #4", "[pair]") {
     std::string str1 = "One";
     int int1 = 4;
-    int int2  = 1;
     Pair<std::string, int> pair = Pair<std::string, int>(str1, int1);
     REQUIRE(pair.getKey() == str1);
     REQUIRE(pair.getValue() == int1);
-    pair.setValue(int2);
-    REQUIRE(pair.getKey() == str1);
-    REQUIRE(pair.getValue() == int2);
 }

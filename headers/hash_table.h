@@ -57,6 +57,33 @@ class HashTable {
             return true;
         }
 
+        bool put(T key, U value) {
+            if(size == 0)
+                return false;
+
+            unsigned int index = hasher(key) % currentCapacity;
+            Node<Pair<T, U>>* itr = table[index].get();
+            Node<Pair<T, U>>* follower = nullptr;
+
+            while(itr) {
+                if(itr->getData().getKey() == key) {
+                    auto newNode = std::make_unique<Node<Pair<T, U>>>(Pair<T, U>(key, value));
+                    newNode->setNext(itr->releaseNext());
+
+                    if(follower)
+                        follower->setNext(std::move(newNode));
+                    else
+                        table[index] = std::move(newNode);
+
+                    return true;
+                }
+                follower = itr;
+                itr = itr->getNext();
+            }
+
+            return false;
+        }
+
         bool contains(T key) const noexcept {
             if(size == 0)
                 return false;
