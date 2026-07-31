@@ -19,6 +19,34 @@ class HashTable {
     unsigned int currentCapacity;
     std::unique_ptr<std::unique_ptr<Node<Pair<T, U>>>[]> table;
 
+    void resize(unsigned int newCapacity) {
+        if(newCapacity >= maxCapacity)
+            throw std::out_of_range(hashTableExceedCapacityErrorMessage);
+        if(newCapacity < hashTableDefaultCapacity)
+            return;
+
+        std::unique_ptr<std::unique_ptr<Node<Pair<T, U>>>[]> newTable = std::make_unique<std::unique_ptr<Node<Pair<T,U>>>[]>(newCapacity);
+        for(unsigned int i = 0; i < currentCapacity; i++) {
+            Node<Pair<T, U>>* itr = table[i].get();
+            while(itr) {
+                T key = itr->getData().getKey();
+                U value = itr->getData().getValue();
+                unsigned short index = (hasher(key)) % newCapacity;
+                Node<Pair<T, U>>* newItr = newTable[index].get();
+                if(newItr) {
+                    while(newItr->hasNext()) newItr = newItr->getNext();
+                    newItr->setNext(std::make_unique<Node<Pair<T, U>>>(Pair<T, U>(key, value)));
+                } else {
+                    newTable[index] = std::make_unique<Node<Pair<T, U>>>(Pair<T, U>(key, value));
+                }
+                itr = itr->getNext();
+            }
+        }
+
+        currentCapacity = newCapacity;
+        table = std::move(newTable);
+    }
+
     public:
         HashTable(): hasher(), size(0), currentCapacity(hashTableDefaultCapacity), table(std::make_unique<std::unique_ptr<Node<Pair<T,U>>>[]>(hashTableDefaultCapacity)){}
         unsigned short getSize () const noexcept { return size; }
@@ -54,6 +82,7 @@ class HashTable {
             }
 
             size = size + 1;
+            if(static_cast<double>(size)/static_cast<double>(currentCapacity) >= 0.8) resize(currentCapacity * 2);
             return true;
         }
 
@@ -114,7 +143,8 @@ class HashTable {
                     } else {
                         table[index] = itr->releaseNext();
                     }
-                     size = size - 1;
+                    size = size - 1;
+                    if(static_cast<double>(size)/static_cast<double>(currentCapacity) <= 0.2) resize(currentCapacity / 2);
                     return true;
                 }
                 follower = itr;

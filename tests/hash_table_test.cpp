@@ -2,7 +2,7 @@
 #include <catch2/matchers/catch_matchers_exception.hpp>
 #include "../headers/hash_table.h"
 
-TEST_CASE("HASTABLE TESTCASES #1", "[hastable]") {
+TEST_CASE("HASTABLE TESTCASES #1", "[hash_table]") {
     HashTable<int, int> testMap = HashTable<int, int>();
     int key1 = 1;
     int key2 = 2;
@@ -80,4 +80,27 @@ TEST_CASE("HASTABLE TESTCASES #1", "[hastable]") {
 
     REQUIRE(testMap.put(key3, key3 * 4));
     REQUIRE(testMap.get(key3) == key3 * 4);
+}
+
+TEST_CASE("HASH TABLE TEST CASE #3", "[hash_table]") {
+    HashTable<int, int> hashTable = HashTable<int, int>();
+    for(int i = 0; i < 10; i++) {
+        hashTable.add(i + 1, i + 11);
+        unsigned int expectedCapacity = hashTable.getSize() < 8 ? hashTableDefaultCapacity : hashTableDefaultCapacity * 2;
+        REQUIRE(hashTable.getCapacity() == expectedCapacity);
+    }
+
+    REQUIRE(!hashTable.isEmpty());
+    REQUIRE(hashTable.getSize() == 10);
+    for(int i = 0; i < 10; i++) {
+        REQUIRE(hashTable.contains(i + 1));
+        REQUIRE(hashTable.get(i + 1) == (i + 11));
+    }
+
+    for(int i = 0; i < 10; i++) {
+        hashTable.remove(i + 1);
+        unsigned int expectedCapacity = hashTable.getSize() <= 4 ? hashTableDefaultCapacity : hashTableDefaultCapacity * 2;
+        REQUIRE(hashTable.getCapacity() == expectedCapacity);
+    }
+
 }
