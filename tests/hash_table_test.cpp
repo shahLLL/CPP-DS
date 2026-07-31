@@ -82,7 +82,11 @@ TEST_CASE("HASTABLE TESTCASES #1", "[hash_table]") {
     REQUIRE(testMap.get(key3) == key3 * 4);
 }
 
+<<<<<<< HEAD
 TEST_CASE("HASH TABLE TEST CASE #3", "[hash_table]") {
+=======
+TEST_CASE("HASH TABLE TEST CASE #2", "[hash_table]") {
+>>>>>>> fba2b89 (Implement resizing for hash table)
     HashTable<int, int> hashTable = HashTable<int, int>();
     for(int i = 0; i < 10; i++) {
         hashTable.add(i + 1, i + 11);
