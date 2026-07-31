@@ -1,5 +1,5 @@
-#ifndef MIN_HEAP
-#define MIN_HEAP
+#ifndef MIN_HEAP_H
+#define MIN_HEAP_H
 
 #include <vector>
 #include <string>

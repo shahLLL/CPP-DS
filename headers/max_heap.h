@@ -1,5 +1,5 @@
-#ifndef MAX_HEAP
-#define MAX_HEAP
+#ifndef MAX_HEAP_H
+#define MAX_HEAP_H
 
 #include <vector>
 #include <string>

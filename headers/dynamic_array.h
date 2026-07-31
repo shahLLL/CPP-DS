@@ -1,5 +1,5 @@
-#ifndef DYNAMIC_ARRAY
-#define DYNAMIC_ARRAY
+#ifndef DYNAMIC_ARRAY_H
+#define DYNAMIC_ARRAY_H
 
 #include <memory>
 #include <climits>
