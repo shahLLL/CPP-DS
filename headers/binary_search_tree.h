@@ -63,7 +63,78 @@ class BinarySearchTree {
         }
 
         bool remove(T val) {
-            
+            if(!root) return false;
+            BinaryTreeNode<T> *itr = root.get();
+            BinaryTreeNode<T> *parent = nullptr;
+
+            while(itr) {
+                if(itr->getVal() != val) {
+                    parent = itr;
+                    if(itr->getVal() < val) {
+                        itr = itr->getLeft();
+                    } else {
+                        itr = itr->getRight();
+                    }
+                } else {
+                    if(!itr->hasLeft() && !itr->hasRight()) {
+                        if(!parent) {
+                            root.reset();
+                        } else {
+                            if(parent->getLeft() == itr) {
+                                parent->setLeft(nullptr);
+                            } else {
+                                parent->setRight(nullptr);
+                            }
+                        }
+                    }
+
+                    else if(itr->hasLeft() && !itr->hasRight()) {
+                        if(!parent) {
+                            root = itr->releaseLeft();
+                        } else {
+                            if(parent->getLeft() == itr){
+                                parent->setLeft(itr->releaseLeft());
+                            } else {
+                                parent->setRight(itr->releaseLeft());
+                            }
+
+                        }
+                    }
+
+                    else if(!itr->hasLeft() && itr->hasRight()) {
+                        if(!parent) {
+                            root = itr->releaseRight();
+                        } else {
+                            if(parent->getLeft() == itr){
+                                parent->setLeft(itr->releaseRight());
+                            } else {
+                                parent->setRight(itr->releaseRight());
+                            }
+                        }
+                    }
+
+                    else {
+                        BinaryTreeNode<T> *leftItr = itr->getLeft();
+                        while(leftItr->hasRight()) leftItr = leftItr->getRight();
+                        leftItr->setRight(itr->releaseRight());
+                        
+                        if(!parent) {
+                            root = itr->releaseLeft();
+                        } else {
+                            if(parent->getLeft() == itr) {
+                                parent->setLeft(itr->releaseLeft());
+                            } else {
+                                parent->setRight(itr->releaseLeft());
+                            }
+                        }
+                    }
+
+                    size = size - 1;
+                    return true;
+                }
+            }
+
+            return false;
         }
 };
 
