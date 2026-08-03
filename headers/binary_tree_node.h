@@ -19,6 +19,8 @@ class BinaryTreeNode {
         void setLeft(std::unique_ptr<BinaryTreeNode<T>> newLeft) noexcept { left = std::move(newLeft); }
         void setRight(T val) { right = std::make_unique<BinaryTreeNode<T>>(val); }
         void setRight(std::unique_ptr<BinaryTreeNode<T>> newRight) noexcept { right = std::move(newRight); }
+        std::unique_ptr<BinaryTreeNode<T>> releaseLeft() { return std::move(left); }
+        std::unique_ptr<BinaryTreeNode<T>> releaseRight() { return std::move(right); }
 };
 
 #endif
